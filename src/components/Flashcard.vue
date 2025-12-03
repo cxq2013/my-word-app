@@ -41,7 +41,9 @@ interface ReviewPlan {
 
 const showMeaning = ref(false)
 const currentIndex = ref(0)
-const currentWord = ref<Word>(wordList[0])
+const currentWord = ref<Word>(wordList[0] || { id: 0, word: '', meaning: '', example: '' })
+
+// 显示单词或释义
 
 // 切换显示单词或释义
 const toggleShowMeaning = () => {
@@ -64,7 +66,7 @@ const handleUnknown = () => {
 const nextWord = () => {
   showMeaning.value = false
   currentIndex.value = (currentIndex.value + 1) % wordList.length
-  currentWord.value = wordList[currentIndex.value]
+  currentWord.value = wordList[currentIndex.value] || { id: 0, word: '', meaning: '', example: '' }
 }
 
 // 保存学习记录到localStorage
@@ -106,7 +108,7 @@ const saveReviewRecord = (wordId: number, status: 'known' | 'unknown') => {
     [key: string]: { wordId: number; status: 'known' | 'unknown'; timestamp: number }[]
   } = learningHistoryStr ? JSON.parse(learningHistoryStr) : {}
 
-  const today = new Date().toISOString().split('T')[0]
+  const today = new Date().toISOString().split('T')[0] as string
   if (!learningHistory[today]) {
     learningHistory[today] = []
   }
