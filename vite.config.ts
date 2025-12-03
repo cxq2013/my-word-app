@@ -10,7 +10,8 @@ import { VitePWA } from 'vite-plugin-pwa'
 export default defineConfig({
   plugins: [
     vue(),
-    vueDevTools(),
+    // 仅在非CI环境下启用 vue-devtools
+    !process.env.CI && vueDevTools(),
     VitePWA({
       registerType: 'autoUpdate',
       manifest: {
