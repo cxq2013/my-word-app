@@ -1,0 +1,20 @@
+{
+    "name": "刷题背单词小助手",
+    "short_name": "刷题背单词",
+    "start_url": "/",
+    "display": "standalone", 
+    "background_color": "#ffffff",
+    "theme_color": "#42b883",
+    "icons": [
+        {
+            "src": "/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-1024.png",
+            "sizes": "1024x1024",
+            "type": "image/png"
+        }
+    ]
+}
